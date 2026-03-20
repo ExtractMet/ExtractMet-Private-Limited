@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--
+   ______                            __
+  / ____/___  ____ ___  ____  __  __/ /____  _____
+ / /   / __ \/ __ `__ \/ __ \/ / / / __/ _ \/ ___/
+/ /___/ /_/ / / / / / / /_/ / /_/ / /_/  __/ /
+\____/\____/_/ /_/ /_/ .___/\__,_/\__/\___/_/
+                    /_/
+        Created with Perplexity Computer
+        https://www.perplexity.ai/computer
+-->
+<meta name="generator" content="Perplexity Computer">
+<meta name="author" content="Perplexity Computer">
+<meta property="og:see_also" content="https://www.perplexity.ai/computer">
+<link rel="author" href="https://www.perplexity.ai/computer">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Collaborate — Extractmet</title>
+<meta name="description" content="Submit a collaboration inquiry to Extractmet. Industry collaborations, academic partnerships, and investment discussions welcome.">
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800&f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="base.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header" id="site-header">
+  <div class="container">
+    <nav class="nav">
+      <a href="index.html" class="nav-logo">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><rect width="36" height="36" rx="8" fill="var(--color-primary)"/><path d="M8 10h20M8 18h14M8 26h20" stroke="#fbbf24" stroke-width="2.5" stroke-linecap="round"/><circle cx="26" cy="18" r="4" fill="#fbbf24"/></svg>
+        <span class="nav-logo-text">Extract<span>met</span></span>
+      </a>
+      <ul class="nav-links" id="nav-links" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="decarbonization.html">Decarbonization</a></li>
+        <li><a href="ferroalloys.html">Ferroalloys</a></li>
+        <li><a href="slag.html">Slag Applications</a></li>
+        <li><a href="monitoring.html">Remote Monitoring</a></li>
+        <li><a href="collaborate.html" class="active">Collaborate</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="btn-theme" data-theme-toggle aria-label="Toggle dark mode"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+        <a href="collaborate.html" class="btn btn-primary">Get in Touch</a>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="page-hero">
+    <div class="container">
+      <div class="page-hero-content reveal">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Home</a>
+          <span class="sep">/</span>
+          <span class="current">Collaborate</span>
+        </nav>
+        <h1>Start a Collaboration</h1>
+        <p>Whether you're a plant operator, researcher, investor, or technology partner—we'd like to hear from you. Our team responds within 24 hours.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORM + CONTACT INFO -->
+  <section>
+    <div class="container">
+      <div class="two-col" style="align-items:start;">
+
+        <!-- INQUIRY FORM -->
+        <div class="form-card reveal">
+          <h2 style="font-family:var(--font-display);font-size:var(--text-xl);font-weight:700;color:var(--color-text);letter-spacing:-0.02em;margin-bottom:var(--space-2);">Collaboration Inquiry</h2>
+          <p style="font-size:var(--text-sm);color:var(--color-text-muted);margin-bottom:var(--space-6);line-height:1.6;">All fields marked with * are required. We treat your information with strict confidentiality.</p>
+
+          <div id="form-wrapper">
+            <form id="inquiry-form" novalidate>
+              <div class="form-grid">
+                <div class="field-group">
+                  <label class="field-label" for="first-name">First Name *</label>
+                  <input class="field-input" type="text" id="first-name" name="first_name" required autocomplete="given-name" placeholder="Rajan">
+                </div>
+                <div class="field-group">
+                  <label class="field-label" for="last-name">Last Name *</label>
+                  <input class="field-input" type="text" id="last-name" name="last_name" required autocomplete="family-name" placeholder="Sharma">
+                </div>
+                <div class="field-group">
+                  <label class="field-label" for="email">Work Email *</label>
+                  <input class="field-input" type="email" id="email" name="email" required autocomplete="email" placeholder="rajan@company.com">
+                </div>
+                <div class="field-group">
+                  <label class="field-label" for="phone">Phone / WhatsApp</label>
+                  <input class="field-input" type="tel" id="phone" name="phone" autocomplete="tel" placeholder="+91 98765 43210">
+                </div>
+                <div class="field-group">
+                  <label class="field-label" for="organisation">Organisation *</label>
+                  <input class="field-input" type="text" id="organisation" name="organisation" required placeholder="Company or Institute Name">
+                </div>
+                <div class="field-group">
+                  <label class="field-label" for="role">Your Role</label>
+                  <select class="field-select" id="role" name="role">
+                    <option value="">Select...</option>
+                    <option>Plant Manager / Operations</option>
+                    <option>R&amp;D / Technical</option>
+                    <option>Sustainability / ESG</option>
+                    <option>Business Development</option>
+                    <option>Academic / Researcher</option>
+                    <option>Investor / Financier</option>
+                    <option>Procurement</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+                <div class="field-group full-width">
+                  <label class="field-label" for="collab-type">Type of Collaboration *</label>
+                  <select class="field-select" id="collab-type" name="collab_type" required>
+                    <option value="">Select a collaboration type...</option>
+                    <option>Decarbonization &amp; Net Zero Roadmap</option>
+                    <option>Ferroalloy Process Optimisation</option>
+                    <option>Slag Valorisation &amp; Circular Economy</option>
+                    <option>Remote Process Monitoring</option>
+                    <option>Techno-Economic Study / DPR</option>
+                    <option>R&amp;D Lab Setup</option>
+                    <option>Training Workshop</option>
+                    <option>Academic / Research Partnership</option>
+                    <option>Investment / Funding Discussion</option>
+                    <option>Critical Minerals &amp; Rare Earths</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+                <div class="field-group full-width">
+                  <label class="field-label" for="process-type">Process / Furnace Type (if applicable)</label>
+                  <select class="field-select" id="process-type" name="process_type">
+                    <option value="">Select if relevant...</option>
+                    <option>Blast Furnace (BF)</option>
+                    <option>Electric Arc Furnace (EAF)</option>
+                    <option>Basic Oxygen Furnace (BOF)</option>
+                    <option>Submerged Arc Furnace (SAF)</option>
+                    <option>DRI / COREX / MIDREX</option>
+                    <option>Induction Furnace</option>
+                    <option>Copper / Non-Ferrous Smelter</option>
+                    <option>Not Applicable</option>
+                  </select>
+                </div>
+                <div class="field-group full-width">
+                  <label class="field-label" for="annual-capacity">Approximate Annual Production / Plant Capacity</label>
+                  <input class="field-input" type="text" id="annual-capacity" name="annual_capacity" placeholder="e.g. 500 kt/yr crude steel, 50 kt/yr FeCr">
+                </div>
+                <div class="field-group full-width">
+                  <label class="field-label" for="message">Describe Your Challenge or Opportunity *</label>
+                  <textarea class="field-input" id="message" name="message" required rows="5" placeholder="Please describe your process challenge, research objective, or collaboration idea in as much detail as you're comfortable sharing. The more context you provide, the more targeted our response will be."></textarea>
+                </div>
+                <div class="field-group full-width">
+                  <label class="field-label" for="timeline">Desired Timeline</label>
+                  <select class="field-select" id="timeline" name="timeline">
+                    <option value="">Select...</option>
+                    <option>Immediate (within 1 month)</option>
+                    <option>Short-term (1–3 months)</option>
+                    <option>Medium-term (3–12 months)</option>
+                    <option>Long-term strategic (12+ months)</option>
+                    <option>Exploratory—no fixed timeline</option>
+                  </select>
+                </div>
+                <div class="field-group full-width">
+                  <label class="field-label" for="how-found">How did you hear about Extractmet?</label>
+                  <select class="field-select" id="how-found" name="how_found">
+                    <option value="">Select...</option>
+                    <option>IIT Madras / Incubation Cell</option>
+                    <option>Industry conference or seminar</option>
+                    <option>Word of mouth / Colleague</option>
+                    <option>Website / Search engine</option>
+                    <option>LinkedIn</option>
+                    <option>Academic publication</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+              </div>
+
+              <div id="form-error" style="display:none;padding:var(--space-3) var(--space-4);background:var(--color-cta-highlight);color:var(--color-cta);border-radius:var(--radius-md);font-size:var(--text-sm);margin-bottom:var(--space-4);"></div>
+
+              <button type="submit" class="btn btn-cta" style="width:100%;justify-content:center;padding:var(--space-4);font-size:var(--text-base);margin-top:var(--space-4);">
+                Submit Inquiry
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+            </form>
+          </div>
+
+          <!-- Success state -->
+          <div class="form-success" id="form-success">
+            <div class="icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+            </div>
+            <h3>Inquiry Received</h3>
+            <p>Thank you for reaching out. A member of the ExtractMet team will respond to you within 24 business hours.</p>
+            <p style="margin-top:var(--space-4);font-size:var(--text-sm);color:var(--color-text-faint);">For urgent matters, email us directly at <a href="mailto:ajayshukla@extractmet.com" style="color:var(--color-primary);">ajayshukla@extractmet.com</a></p>
+          </div>
+        </div>
+
+        <!-- CONTACT INFO -->
+        <div class="reveal" style="padding-top:var(--space-4);">
+          <p class="section-label">Get in Touch</p>
+          <h2 class="section-title">We welcome industry collaborations, academic partnerships, and investment discussions</h2>
+          <p style="font-size:var(--text-base);color:var(--color-text-muted);line-height:1.7;margin-bottom:var(--space-8);">ExtractMet is incubated at the IIT Madras Incubation Cell—giving us access to world-class research infrastructure and a network of 100+ experts in metallurgy, data science, and process engineering.</p>
+
+          <div style="display:flex;flex-direction:column;gap:var(--space-5);margin-bottom:var(--space-10);">
+            <div style="display:flex;gap:var(--space-4);align-items:flex-start;">
+              <div style="width:40px;height:40px;border-radius:var(--radius-md);background:var(--color-primary-highlight);color:var(--color-primary);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              </div>
+              <div>
+                <div style="font-weight:700;color:var(--color-text);font-size:var(--text-sm);margin-bottom:var(--space-1);">Dr. Ajay Kumar Shukla</div>
+                <div style="font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.6;">Founder &amp; Director | Professor, IIT Madras<br><a href="mailto:ajayshukla@extractmet.com" style="color:var(--color-primary);text-decoration:none;">ajayshukla@extractmet.com</a></div>
+              </div>
+            </div>
+            <div style="display:flex;gap:var(--space-4);align-items:flex-start;">
+              <div style="width:40px;height:40px;border-radius:var(--radius-md);background:var(--color-primary-highlight);color:var(--color-primary);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              </div>
+              <div>
+                <div style="font-weight:700;color:var(--color-text);font-size:var(--text-sm);margin-bottom:var(--space-1);">Dr. Shubhra Shukla</div>
+                <div style="font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.6;">Director | PhD Organic Chemistry<br><a href="mailto:shubhra.awasthi@extractmet.com" style="color:var(--color-primary);text-decoration:none;">shubhra.awasthi@extractmet.com</a></div>
+              </div>
+            </div>
+            <div style="display:flex;gap:var(--space-4);align-items:flex-start;">
+              <div style="width:40px;height:40px;border-radius:var(--radius-md);background:var(--color-primary-highlight);color:var(--color-primary);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div>
+                <div style="font-weight:700;color:var(--color-text);font-size:var(--text-sm);margin-bottom:var(--space-1);">Address</div>
+                <div style="font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.6;">Extractmet Private Limited<br>IIT Madras Incubation Cell<br>Chennai, Tamil Nadu 600036, India</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- What happens next -->
+          <div style="background:var(--color-surface-offset);border:1px solid var(--color-border);border-radius:var(--radius-xl);padding:var(--space-6);">
+            <h3 style="font-family:var(--font-display);font-size:var(--text-lg);font-weight:700;color:var(--color-text);margin-bottom:var(--space-4);">What happens next?</h3>
+            <div style="display:flex;flex-direction:column;gap:var(--space-4);">
+              <div style="display:flex;gap:var(--space-3);align-items:flex-start;">
+                <div style="width:28px;height:28px;border-radius:50%;background:var(--color-primary);color:#fff;display:flex;align-items:center;justify-content:center;font-size:var(--text-xs);font-weight:700;flex-shrink:0;">1</div>
+                <div style="font-size:var(--text-sm);color:var(--color-text-muted);padding-top:4px;">Your inquiry is reviewed by our technical team within 24 hours</div>
+              </div>
+              <div style="display:flex;gap:var(--space-3);align-items:flex-start;">
+                <div style="width:28px;height:28px;border-radius:50%;background:var(--color-primary);color:#fff;display:flex;align-items:center;justify-content:center;font-size:var(--text-xs);font-weight:700;flex-shrink:0;">2</div>
+                <div style="font-size:var(--text-sm);color:var(--color-text-muted);padding-top:4px;">We schedule a 30-minute discovery call to understand your process challenge</div>
+              </div>
+              <div style="display:flex;gap:var(--space-3);align-items:flex-start;">
+                <div style="width:28px;height:28px;border-radius:50%;background:var(--color-primary);color:#fff;display:flex;align-items:center;justify-content:center;font-size:var(--text-xs);font-weight:700;flex-shrink:0;">3</div>
+                <div style="font-size:var(--text-sm);color:var(--color-text-muted);padding-top:4px;">We deliver a tailored scope of work proposal within 5 business days</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand"><a href="index.html" class="nav-logo" style="margin-bottom:var(--space-2);"><svg width="32" height="32" viewBox="0 0 36 36" fill="none"><rect width="36" height="36" rx="8" fill="var(--color-primary)"/><path d="M8 10h20M8 18h14M8 26h20" stroke="#fbbf24" stroke-width="2.5" stroke-linecap="round"/><circle cx="26" cy="18" r="4" fill="#fbbf24"/></svg><span class="nav-logo-text">Extract<span>met</span></span></a><p>Driving Sustainable Metallurgy. Incubated at IIT Madras.</p></div>
+      <div class="footer-col"><h4>Solutions</h4><ul role="list"><li><a href="decarbonization.html">Decarbonization</a></li><li><a href="ferroalloys.html">Ferroalloys</a></li><li><a href="slag.html">Slag</a></li><li><a href="monitoring.html">Monitoring</a></li></ul></div>
+      <div class="footer-col"><h4>Company</h4><ul role="list"><li><a href="https://www.extractmet.com" target="_blank" rel="noopener noreferrer">Main Website</a></li><li><a href="collaborate.html">Contact</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul role="list"><li><a href="mailto:ajayshukla@extractmet.com">ajayshukla@extractmet.com</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><p>© 2025 Extractmet Private Limited.</p><a href="https://www.perplexity.ai/computer" target="_blank" rel="noopener noreferrer">Created with Perplexity Computer</a></div>
+  </div>
+</footer>
+
+<script>
+(function(){const t=document.querySelector('[data-theme-toggle]'),r=document.documentElement;let d=matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';r.setAttribute('data-theme',d);if(t){t.innerHTML=d==='dark'?'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>':'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';t.addEventListener('click',()=>{d=d==='dark'?'light':'dark';r.setAttribute('data-theme',d);t.innerHTML=d==='dark'?'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>':'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>'});} })();
+const navToggle=document.getElementById('nav-toggle'),navLinks=document.getElementById('nav-links');navToggle?.addEventListener('click',()=>{const o=navLinks.classList.toggle('open');navToggle.setAttribute('aria-expanded',o);});
+const header=document.getElementById('site-header');window.addEventListener('scroll',()=>{header.classList.toggle('site-header--scrolled',window.scrollY>10);},{passive:true});
+const io=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');io.unobserve(x.target);}});},{threshold:0.1});document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+// Form validation + submit
+document.getElementById('inquiry-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const errEl = document.getElementById('form-error');
+  errEl.style.display = 'none';
+
+  const required = ['first-name','last-name','email','organisation','collab-type','message'];
+  let missing = false;
+  required.forEach(id => {
+    const el = document.getElementById(id);
+    if (!el.value.trim()) {
+      el.style.borderColor = 'var(--color-cta)';
+      missing = true;
+    } else {
+      el.style.borderColor = '';
+    }
+  });
+
+  const emailEl = document.getElementById('email');
+  if (emailEl.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailEl.value)) {
+    emailEl.style.borderColor = 'var(--color-cta)';
+    missing = true;
+  }
+
+  if (missing) {
+    errEl.textContent = 'Please fill in all required fields with valid information.';
+    errEl.style.display = 'block';
+    return;
+  }
+
+  // Simulate submission
+  document.getElementById('form-wrapper').style.display = 'none';
+  document.getElementById('form-success').style.display = 'block';
+  window.scrollTo({ top: document.getElementById('form-wrapper').offsetTop - 100, behavior: 'smooth' });
+});
+
+// Clear error styling on input
+document.querySelectorAll('.field-input,.field-select').forEach(el=>{el.addEventListener('input',()=>{el.style.borderColor='';});});
+</script>
+</body>
+</html>

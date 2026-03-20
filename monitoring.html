@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--
+   ______                            __
+  / ____/___  ____ ___  ____  __  __/ /____  _____
+ / /   / __ \/ __ `__ \/ __ \/ / / / __/ _ \/ ___/
+/ /___/ /_/ / / / / / / /_/ / /_/ / /_/  __/ /
+\____/\____/_/ /_/ /_/ .___/\__,_/\__/\___/_/
+                    /_/
+        Created with Perplexity Computer
+        https://www.perplexity.ai/computer
+-->
+<meta name="generator" content="Perplexity Computer">
+<meta name="author" content="Perplexity Computer">
+<meta property="og:see_also" content="https://www.perplexity.ai/computer">
+<link rel="author" href="https://www.perplexity.ai/computer">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI-Enabled Remote Process Monitoring — Extractmet</title>
+<meta name="description" content="ExtractMet's remote process monitoring platform delivers real-time telemetry, AI anomaly detection, and predictive alerts for blast furnaces, EAFs, and submerged arc furnaces.">
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800&f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="base.css">
+<link rel="stylesheet" href="style.css">
+<style>
+/* Live dashboard simulation */
+.dashboard-mock {
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-lg);
+}
+
+.dashboard-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-6);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--color-divider);
+}
+
+.dashboard-title {
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.dashboard-time {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.kpi-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+@media (max-width: 640px) {
+  .kpi-row { grid-template-columns: repeat(2, 1fr); }
+}
+
+.kpi-card {
+  background: var(--color-surface-offset);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+}
+
+.kpi-card .label {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-1);
+}
+
+.kpi-card .value {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 800;
+  color: var(--color-text);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+.kpi-card .delta {
+  font-size: var(--text-xs);
+  margin-top: var(--space-1);
+  font-weight: 600;
+}
+
+.delta-up { color: var(--color-success); }
+.delta-down { color: #ef4444; }
+.delta-ok { color: var(--color-text-muted); }
+
+/* Mini sparkline chart */
+.chart-area {
+  height: 80px;
+  position: relative;
+}
+
+.chart-area svg { width: 100%; height: 100%; }
+
+/* Alert list */
+.alert-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+}
+
+.alert-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+}
+
+.alert-warn { background: var(--color-cta-highlight); color: var(--color-cta); }
+.alert-ok   { background: var(--color-success-highlight); color: var(--color-success); }
+.alert-info { background: var(--color-primary-highlight); color: var(--color-primary); }
+
+.alert-dot {
+  width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+}
+.alert-warn .alert-dot { background: var(--color-cta); }
+.alert-ok .alert-dot   { background: var(--color-success); }
+.alert-info .alert-dot { background: var(--color-primary); }
+</style>
+</head>
+<body>
+
+<header class="site-header" id="site-header">
+  <div class="container">
+    <nav class="nav">
+      <a href="index.html" class="nav-logo">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><rect width="36" height="36" rx="8" fill="var(--color-primary)"/><path d="M8 10h20M8 18h14M8 26h20" stroke="#fbbf24" stroke-width="2.5" stroke-linecap="round"/><circle cx="26" cy="18" r="4" fill="#fbbf24"/></svg>
+        <span class="nav-logo-text">Extract<span>met</span></span>
+      </a>
+      <ul class="nav-links" id="nav-links" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="decarbonization.html">Decarbonization</a></li>
+        <li><a href="ferroalloys.html">Ferroalloys</a></li>
+        <li><a href="slag.html">Slag Applications</a></li>
+        <li><a href="monitoring.html" class="active">Remote Monitoring</a></li>
+        <li><a href="collaborate.html">Collaborate</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="btn-theme" data-theme-toggle aria-label="Toggle dark mode"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+        <a href="collaborate.html" class="btn btn-primary">Get in Touch</a>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="page-hero">
+    <div class="container">
+      <div class="page-hero-content reveal">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Home</a>
+          <span class="sep">/</span>
+          <span class="current">Remote Monitoring</span>
+        </nav>
+        <h1>AI-Enabled Remote Process Monitoring</h1>
+        <p>Real-time telemetry, anomaly detection, and predictive alerts for blast furnaces, EAFs, and submerged arc furnaces—delivering expert process guidance without an on-site consultant.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIVE DASHBOARD MOCKUP -->
+  <section>
+    <div class="container">
+      <div class="two-col">
+        <div class="reveal">
+          <p class="section-label">Platform</p>
+          <h2 class="section-title">Your furnace data, always in expert hands</h2>
+          <p>ExtractMet's monitoring platform ingests real-time process data from your existing instrumentation—no hardware replacement required. Our AI models, trained on fundamental metallurgical process knowledge and historical plant data, detect anomalies and prescribe corrective actions before problems escalate.</p>
+          <ul class="info-list">
+            <li>Connects to existing DCS/SCADA via standard OPC-UA, Modbus, or REST APIs</li>
+            <li>Real-time key performance indicator (KPI) dashboard accessible anywhere</li>
+            <li>AI anomaly detection with alert classification and root cause analysis</li>
+            <li>Predictive maintenance alerts for critical equipment (electrodes, tuyeres, cooling)</li>
+            <li>Weekly process reports with recommendations from metallurgical experts</li>
+          </ul>
+          <a href="collaborate.html" class="btn btn-primary" style="margin-top:var(--space-4);">Request a Demo</a>
+        </div>
+
+        <!-- Live-updating dashboard mockup -->
+        <div class="reveal">
+          <div class="dashboard-mock">
+            <div class="dashboard-header">
+              <div class="dashboard-title">
+                <span class="live-dot" aria-label="Live"></span>
+                EAF Unit 2 — Live Monitor
+              </div>
+              <div class="dashboard-time" id="live-time">Loading...</div>
+            </div>
+
+            <div class="kpi-row">
+              <div class="kpi-card">
+                <div class="label">Furnace Temp (°C)</div>
+                <div class="value" id="kpi-temp">1,612</div>
+                <div class="delta delta-ok" id="d-temp">↔ Nominal</div>
+              </div>
+              <div class="kpi-card">
+                <div class="label">Power Input (MW)</div>
+                <div class="value" id="kpi-power">48.3</div>
+                <div class="delta delta-up" id="d-power">↑ Optimising</div>
+              </div>
+              <div class="kpi-card">
+                <div class="label">O₂ Injection (Nm³/h)</div>
+                <div class="value" id="kpi-o2">3,240</div>
+                <div class="delta delta-ok" id="d-o2">↔ On Target</div>
+              </div>
+              <div class="kpi-card">
+                <div class="label">Specific Energy (kWh/t)</div>
+                <div class="value" id="kpi-energy">385</div>
+                <div class="delta delta-up" id="d-energy">↓ –4% vs avg</div>
+              </div>
+            </div>
+
+            <!-- Mini sparkline -->
+            <div class="chart-area">
+              <svg viewBox="0 0 400 80" preserveAspectRatio="none" fill="none" id="spark-svg">
+                <defs>
+                  <linearGradient id="sg" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="var(--color-primary)" stop-opacity="0.3"/>
+                    <stop offset="100%" stop-color="var(--color-primary)" stop-opacity="0.0"/>
+                  </linearGradient>
+                </defs>
+                <path id="spark-area" fill="url(#sg)"/>
+                <path id="spark-line" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div style="font-size:var(--text-xs);color:var(--color-text-faint);margin-top:var(--space-2);">Temperature trend — last 20 readings</div>
+
+            <div class="alert-list">
+              <div class="alert-item alert-ok">
+                <span class="alert-dot"></span>
+                <span>Electrode immersion depth: within optimal range (420–440 mm)</span>
+              </div>
+              <div class="alert-item alert-warn" id="alert-warn">
+                <span class="alert-dot"></span>
+                <span>Cooling water flow: Zone 3 slightly below target — monitor</span>
+              </div>
+              <div class="alert-item alert-info">
+                <span class="alert-dot"></span>
+                <span>AI recommendation: reduce oxygen lancing rate by 3% to minimise iron losses</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section style="background:var(--color-surface-offset);">
+    <div class="container">
+      <p class="section-label">Capabilities</p>
+      <h2 class="section-title">Purpose-built for metallurgical processes</h2>
+      <div class="feature-grid" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr));">
+        <div class="feature-item reveal">
+          <div class="icon"><svg viewBox="0 0 52 52" fill="none"><circle cx="26" cy="26" r="24" fill="var(--color-primary-highlight)"/><path d="M16 32l5-8 5 4 5-10 5 6" stroke="var(--color-primary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h4>Real-Time Telemetry</h4>
+          <p>Sub-second data ingestion from any plant instrumentation system via open industrial protocols.</p>
+        </div>
+        <div class="feature-item reveal">
+          <div class="icon"><svg viewBox="0 0 52 52" fill="none"><circle cx="26" cy="26" r="24" fill="var(--color-primary-highlight)"/><path d="M26 16v5l4 4" stroke="var(--color-primary)" stroke-width="2.5" stroke-linecap="round"/><circle cx="26" cy="26" r="8" stroke="var(--color-primary)" stroke-width="2"/></svg></div>
+          <h4>Anomaly Detection</h4>
+          <p>Machine learning models trained on thousands of heats identify deviations 15–30 minutes before they become costly process upsets.</p>
+        </div>
+        <div class="feature-item reveal">
+          <div class="icon"><svg viewBox="0 0 52 52" fill="none"><circle cx="26" cy="26" r="24" fill="var(--color-primary-highlight)"/><path d="M20 26h12M26 20v12" stroke="var(--color-primary)" stroke-width="2.5" stroke-linecap="round"/></svg></div>
+          <h4>Prescriptive Alerts</h4>
+          <p>Alerts include not just "what went wrong" but "what to do"—actionable corrective guidance from embedded metallurgical process rules.</p>
+        </div>
+        <div class="feature-item reveal">
+          <div class="icon"><svg viewBox="0 0 52 52" fill="none"><circle cx="26" cy="26" r="24" fill="var(--color-primary-highlight)"/><rect x="18" y="20" width="16" height="12" rx="2" stroke="var(--color-primary)" stroke-width="2"/><path d="M22 20v-3a4 4 0 0 1 8 0v3" stroke="var(--color-primary)" stroke-width="2"/></svg></div>
+          <h4>Secure &amp; Remote</h4>
+          <p>End-to-end encrypted data pipeline. Access your plant dashboard from any browser, anywhere in the world.</p>
+        </div>
+        <div class="feature-item reveal">
+          <div class="icon"><svg viewBox="0 0 52 52" fill="none"><circle cx="26" cy="26" r="24" fill="var(--color-primary-highlight)"/><path d="M18 34V22l8-4 8 4v12l-8 4-8-4z" stroke="var(--color-primary)" stroke-width="2" stroke-linejoin="round"/></svg></div>
+          <h4>Expert Weekly Reports</h4>
+          <p>Summarised insights and improvement recommendations delivered each week by ExtractMet's metallurgical engineers.</p>
+        </div>
+        <div class="feature-item reveal">
+          <div class="icon"><svg viewBox="0 0 52 52" fill="none"><circle cx="26" cy="26" r="24" fill="var(--color-primary-highlight)"/><path d="M22 26a4 4 0 1 0 8 0 4 4 0 0 0-8 0zM34.2 34.2a10 10 0 1 0-16.4 0" stroke="var(--color-primary)" stroke-width="2"/></svg></div>
+          <h4>Rapid Deployment</h4>
+          <p>Typically live within 4–6 weeks of engagement start—no hardware procurement or IT infrastructure changes required.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUPPORTED PROCESSES -->
+  <section>
+    <div class="container container--narrow">
+      <p class="section-label">Supported Processes</p>
+      <h2 class="section-title">What we monitor</h2>
+      <div class="accordion-item reveal"><button class="accordion-trigger" aria-expanded="false"><span>Blast Furnace (BF)</span><svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="accordion-body">Raceway temperature, hot metal temperature and chemistry, burden distribution, gas utilisation efficiency (CO utilisation), and shaft pressure differential. Predictive detection of hanging, slipping, and tuyere damage.</div></div>
+      <div class="accordion-item reveal"><button class="accordion-trigger" aria-expanded="false"><span>Electric Arc Furnace (EAF)</span><svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="accordion-body">Electrode position and immersion depth, power and energy input per heat, bath temperature estimation, oxygen and carbon injection optimisation, and off-gas composition for foaming slag control. Heat time and melt-out prediction.</div></div>
+      <div class="accordion-item reveal"><button class="accordion-trigger" aria-expanded="false"><span>Submerged Arc Furnace (SAF)</span><svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="accordion-body">Electrode slip and breakage detection, burden resistance monitoring, specific energy consumption, tap chemistry prediction, and slag level estimation. Charge mix recommendation for optimal slag basicity and alloy recovery.</div></div>
+      <div class="accordion-item reveal"><button class="accordion-trigger" aria-expanded="false"><span>Basic Oxygen Furnace (BOF)</span><svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="accordion-body">Lance position and blowing pattern optimisation, dynamic charge calculation, end-point carbon and temperature prediction, and slopping detection via off-gas and vibration analysis.</div></div>
+    </div>
+  </section>
+
+  <div class="cta-band">
+    <div class="container">
+      <h2>See your plant data in real time</h2>
+      <p>Request a demo engagement to see how ExtractMet's monitoring platform integrates with your existing plant instrumentation.</p>
+      <a href="collaborate.html" class="btn btn-cta" style="font-size:var(--text-base);padding:var(--space-4) var(--space-8);">Request a Monitoring Demo →</a>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand"><a href="index.html" class="nav-logo" style="margin-bottom:var(--space-2);"><svg width="32" height="32" viewBox="0 0 36 36" fill="none"><rect width="36" height="36" rx="8" fill="var(--color-primary)"/><path d="M8 10h20M8 18h14M8 26h20" stroke="#fbbf24" stroke-width="2.5" stroke-linecap="round"/><circle cx="26" cy="18" r="4" fill="#fbbf24"/></svg><span class="nav-logo-text">Extract<span>met</span></span></a><p>Driving Sustainable Metallurgy. Incubated at IIT Madras.</p></div>
+      <div class="footer-col"><h4>Solutions</h4><ul role="list"><li><a href="decarbonization.html">Decarbonization</a></li><li><a href="ferroalloys.html">Ferroalloys</a></li><li><a href="slag.html">Slag</a></li><li><a href="monitoring.html">Monitoring</a></li></ul></div>
+      <div class="footer-col"><h4>Company</h4><ul role="list"><li><a href="https://www.extractmet.com" target="_blank" rel="noopener noreferrer">Main Website</a></li><li><a href="collaborate.html">Contact</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul role="list"><li><a href="mailto:ajayshukla@extractmet.com">ajayshukla@extractmet.com</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><p>© 2025 Extractmet Private Limited.</p><a href="https://www.perplexity.ai/computer" target="_blank" rel="noopener noreferrer">Created with Perplexity Computer</a></div>
+  </div>
+</footer>
+
+<script>
+(function(){const t=document.querySelector('[data-theme-toggle]'),r=document.documentElement;let d=matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';r.setAttribute('data-theme',d);if(t){t.innerHTML=d==='dark'?'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>':'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';t.addEventListener('click',()=>{d=d==='dark'?'light':'dark';r.setAttribute('data-theme',d);t.innerHTML=d==='dark'?'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>':'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>'});} })();
+const navToggle=document.getElementById('nav-toggle'),navLinks=document.getElementById('nav-links');navToggle?.addEventListener('click',()=>{const o=navLinks.classList.toggle('open');navToggle.setAttribute('aria-expanded',o);});
+const header=document.getElementById('site-header');window.addEventListener('scroll',()=>{header.classList.toggle('site-header--scrolled',window.scrollY>10);},{passive:true});
+const io=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');io.unobserve(x.target);}});},{threshold:0.1});document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+document.querySelectorAll('.accordion-trigger').forEach(btn=>{btn.addEventListener('click',()=>{const expanded=btn.getAttribute('aria-expanded')==='true';document.querySelectorAll('.accordion-trigger').forEach(b=>{b.setAttribute('aria-expanded','false');b.nextElementSibling.classList.remove('open');});if(!expanded){btn.setAttribute('aria-expanded','true');btn.nextElementSibling.classList.add('open');}});});
+
+// Live dashboard simulation
+const tempHistory = Array.from({length:20},(_,i)=>1580+Math.round(Math.sin(i*0.4)*25+Math.random()*15));
+let tick = 0;
+
+function updateSparkline(data){
+  const min=Math.min(...data)-10,max=Math.max(...data)+10,rng=max-min;
+  const pts=data.map((v,i)=>`${i*21},${80-((v-min)/rng)*70}`);
+  const areaPath='M'+pts.join('L')+'L'+((data.length-1)*21)+',80 L0,80 Z';
+  const linePath='M'+pts.join('L');
+  document.getElementById('spark-area').setAttribute('d',areaPath);
+  document.getElementById('spark-line').setAttribute('d',linePath);
+}
+
+function updateDashboard(){
+  const now=new Date();
+  document.getElementById('live-time').textContent=now.toLocaleTimeString('en-IN',{hour12:false});
+
+  // Jitter KPIs
+  const temp=1580+Math.round(Math.sin(tick*0.3)*30+Math.random()*12);
+  const power=(47+Math.sin(tick*0.2)*2+Math.random()).toFixed(1);
+  const o2=3200+Math.round(Math.sin(tick*0.15)*100+Math.random()*50);
+  const energy=380+Math.round(Math.cos(tick*0.25)*10+Math.random()*8);
+
+  document.getElementById('kpi-temp').textContent=temp.toLocaleString();
+  document.getElementById('kpi-power').textContent=power;
+  document.getElementById('kpi-o2').textContent=o2.toLocaleString();
+  document.getElementById('kpi-energy').textContent=energy;
+
+  // Update sparkline
+  tempHistory.shift();
+  tempHistory.push(temp);
+  updateSparkline(tempHistory);
+
+  tick++;
+}
+
+updateSparkline(tempHistory);
+setInterval(updateDashboard, 2000);
+</script>
+</body>
+</html>
