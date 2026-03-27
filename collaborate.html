@@ -305,32 +305,30 @@ document.getElementById('inquiry-form').addEventListener('submit', async functio
     return;
   }
 
-  // Submit to Formspree
-  const submitBtn = this.querySelector('[type="submit"]');
-  submitBtn.disabled = true;
-  submitBtn.textContent = 'Sending...';
+  // Build mailto with form data
+  const f = id => document.getElementById(id).value.trim();
+  const subject = encodeURIComponent('Collaboration Inquiry from ' + f('first-name') + ' ' + f('last-name') + ' — ' + f('organisation'));
+  const body = encodeURIComponent(
+    'Name: ' + f('first-name') + ' ' + f('last-name') + '\n' +
+    'Email: ' + f('email') + '\n' +
+    'Phone: ' + (f('phone') || 'Not provided') + '\n' +
+    'Organisation: ' + f('organisation') + '\n' +
+    'Role: ' + (document.getElementById('role').value || 'Not specified') + '\n' +
+    'Collaboration Type: ' + document.getElementById('collab-type').value + '\n' +
+    'Process / Furnace: ' + (document.getElementById('process-type').value || 'Not specified') + '\n' +
+    'Annual Capacity: ' + (f('annual-capacity') || 'Not provided') + '\n' +
+    'Timeline: ' + (document.getElementById('timeline').value || 'Not specified') + '\n' +
+    'How Found Us: ' + (document.getElementById('how-found').value || 'Not specified') + '\n\n' +
+    'Message:\n' + f('message')
+  );
+  window.location.href = 'mailto:ajayshukla@extractmet.com?subject=' + subject + '&body=' + body;
 
-  try {
-    const formData = new FormData(this);
-    const response = await fetch('https://formspree.io/f/ajayshukla@extractmet.com', {
-      method: 'POST',
-      body: formData,
-      headers: { 'Accept': 'application/json' }
-    });
-
-    if (response.ok) {
-      document.getElementById('form-wrapper').style.display = 'none';
-      document.getElementById('form-success').style.display = 'block';
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    } else {
-      throw new Error('Server error');
-    }
-  } catch(err) {
-    errEl.textContent = 'Submission failed. Please email us directly at ajayshukla@extractmet.com';
-    errEl.style.display = 'block';
-    submitBtn.disabled = false;
-    submitBtn.textContent = 'Submit Inquiry';
-  }
+  // Show success
+  setTimeout(() => {
+    document.getElementById('form-wrapper').style.display = 'none';
+    document.getElementById('form-success').style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, 500);
 });
 
 // Clear error styling on input
